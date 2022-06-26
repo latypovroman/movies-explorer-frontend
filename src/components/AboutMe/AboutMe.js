@@ -17,8 +17,8 @@ const AboutMe = () => {
                         В данный момент нахожусь в поиске работы.
                     </p>
                     <ul className="me__social">
-                        <a className="me__social-link" href="https://github.com/latypovroman">Github</a>
-                        <a className="me__social-link" href="https://t.me/Elromano">Telegram</a>
+                        <li><a className="me__social-link" href="https://github.com/latypovroman">Github</a></li>
+                        <li><a className="me__social-link" href="https://t.me/Elromano">Telegram</a></li>
                     </ul>
                 </div>
                 <img className="me__photo" src={photo} alt="Роман Латыпов"/>

@@ -1,0 +1,45 @@
+.footer {
+    background-color: #202020;
+    padding: 0 70px;
+}
+
+.footer__text {
+    color: #8B8B8B;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+}
+
+.footer__container{
+    border-top: 1px solid #424242;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.footer__year {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.footer__navigation {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footer__link {
+    text-decoration: none;
+    color: white;
+    margin-left: 20px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    transition: all 0.3s ease-in;
+}
+
+.footer__link:hover {
+    opacity: 0.8;
+}

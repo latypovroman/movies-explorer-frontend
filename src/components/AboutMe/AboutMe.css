@@ -53,6 +53,11 @@
     font-size: 14px;
     line-height: 17px;
     margin-right: 20px;
+    transition: all 0.3s ease-in;
+}
+
+.me__social-link:hover {
+    opacity: 0.8;
 }
 
 .me__social {
