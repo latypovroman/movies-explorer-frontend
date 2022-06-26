@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../react-mesto-api-full/frontend/.idea/frontend.iml" filepath="$PROJECT_DIR$/../react-mesto-api-full/frontend/.idea/frontend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../mesto/.idea/mesto.iml" filepath="$PROJECT_DIR$/../mesto/.idea/mesto.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/movies-explorer-frontend.iml" filepath="$PROJECT_DIR$/.idea/movies-explorer-frontend.iml" />
     </modules>
   </component>
