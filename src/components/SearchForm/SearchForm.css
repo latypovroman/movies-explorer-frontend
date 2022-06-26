@@ -1,7 +1,6 @@
 .search {
-    padding: 60px 70px 70px;
+    padding: 60px 70px 0;
     background-color: #202020;
-    border-bottom: 1px solid #424242;
 }
 
 .search__input {
@@ -36,6 +35,13 @@
     bottom: 40px;
     right: 6px;
     border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+
+.search__button:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
 }
 
 .search__switch-switcher {
@@ -53,6 +59,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 70px;
+    border-bottom: 1px solid #424242;
 }
 
 .search__switch-description {
