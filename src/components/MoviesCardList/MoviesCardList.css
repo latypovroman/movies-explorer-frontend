@@ -13,6 +13,10 @@
     list-style: none;
 }
 
+.card-list_saved-movies {
+    padding-bottom: 90px;
+}
+
 .card-list__more {
     width: 100%;
     color: white;

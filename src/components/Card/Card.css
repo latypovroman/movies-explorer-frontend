@@ -17,6 +17,7 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+    padding: 0;
 }
 
 .card__length {
@@ -32,4 +33,9 @@
     grid-template-columns: 1fr 50px;
     padding: 14px 12px;
     row-gap: 10px;
+}
+
+.card__delete-icon {
+    padding: 7px;
+    object-fit: cover;
 }
