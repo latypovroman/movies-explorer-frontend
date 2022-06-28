@@ -3,4 +3,5 @@
     margin: 0 auto;
     font-family: 'Inter', serif;
     box-sizing: border-box;
+    min-height: 100vh;
 }
