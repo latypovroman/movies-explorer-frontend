@@ -1,6 +1,11 @@
 .project {
-    padding: 110px 70px;
     background-color: #202020;
+}
+
+.project__inner {
+    padding: 110px 0;
+    max-width: 1140px;
+    margin: 0 auto;
 }
 
 .project__title {

@@ -14,13 +14,16 @@ const Header = () => {
 
     return (
         <header className={headerBG()}>
-            <img className="header__logo" src={logo} alt="logo"/>
-            <div className={flexType()}>
-                <Routes>
-                    <Route path="/" element={<NavAuthBlock />}/>
-                    <Route path="/movies" element={<NavMovieBlock />}/>
-                    <Route path="/saved-movies" element={<NavMovieBlock />}/>
-                </Routes>
+            <div className="header__container">
+                <img className="header__logo" src={logo} alt="logo"/>
+                <div className={flexType()}>
+                    <Routes>
+                        <Route path="/" element={ <NavAuthBlock/> }/>
+                        <Route path="/movies" element={ <NavMovieBlock/> }/>
+                        <Route path="/saved-movies" element={ <NavMovieBlock/> }/>
+                        <Route path="/profile" element={ <NavMovieBlock/> }/>
+                    </Routes>
+                </div>
             </div>
         </header>
     );

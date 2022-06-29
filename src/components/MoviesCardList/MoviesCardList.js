@@ -6,10 +6,12 @@ const MoviesCardList = () => {
 
     return (
         <section className="cards">
-            <ul className="card-list">
-                {[...Array(16)].map((card, index) => <Card key={index}/>)}
-            </ul>
-            <button className="card-list__more">Ещё</button>
+            <div className="cards__inner">
+                <ul className="card-list">
+                    {[...Array(16)].map((card, index) => <Card key={index}/>)}
+                </ul>
+                <button className="card-list__more">Ещё</button>
+            </div>
         </section>
     );
 };

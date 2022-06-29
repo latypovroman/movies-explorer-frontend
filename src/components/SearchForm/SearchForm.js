@@ -14,17 +14,19 @@ const SearchForm = () => {
 
     return (
         <div className="search">
-            <input className="search__input" placeholder="Фильм"/>
-            <button className="search__button"><img src={find} alt="Иконка поиска"/></button>
-            <div className="search__switch">
-                <button className="search__switch-switcher" onClick={handleSwitch}>
-                    {
-                        isSwitchOn
-                        ? <img className="search__switch-image" src={switchOn} alt="Включеный чекбокс"/>
-                        : <img className="search__switch-image" src={switchOff} alt="Выключеный чекбокс"/>
-                    }
-                </button>
-                <p className="search__switch-description">Короткометражки</p>
+            <div className="search__inner">
+                <input className="search__input" placeholder="Фильм"/>
+                <button className="search__button"><img src={find} alt="Иконка поиска"/></button>
+                <div className="search__switch">
+                    <button className="search__switch-switcher" onClick={handleSwitch}>
+                        {
+                            isSwitchOn
+                                ? <img className="search__switch-image" src={switchOn} alt="Включеный чекбокс"/>
+                                : <img className="search__switch-image" src={switchOff} alt="Выключеный чекбокс"/>
+                        }
+                    </button>
+                    <p className="search__switch-description">Короткометражки</p>
+                </div>
             </div>
         </div>
     );
