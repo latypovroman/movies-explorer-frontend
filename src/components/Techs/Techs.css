@@ -4,7 +4,7 @@
 }
 
 .techs__inner {
-    padding: 100px 0;
+    padding: 100px 50px;
     max-width: 1140px;
     margin: 0 auto;
 }
@@ -57,4 +57,20 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+}
+
+@media screen and (max-width: 768px) {
+    .techs__inner {
+        padding: 90px 50px;
+    }
+
+    .techs__description {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .techs__item {
+        width: 84px;
+        height: 36px;
+    }
 }

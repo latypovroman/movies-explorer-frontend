@@ -9,7 +9,7 @@
     justify-content: space-between;
     max-width: 1140px;
     margin: 0 auto;
-    padding: 50px 0 60px;
+    padding: 50px 50px 60px;
 }
 
 .promo__title {
@@ -25,4 +25,22 @@
     width: 722px;
     height: 244px;
     align-self: end;
+}
+
+@media screen and (max-width: 768px) {
+    .promo__container {
+        padding: 300px 0 70px;
+        min-height: 474px;
+    }
+
+    .promo__title {
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .promo__image {
+        width: 680px;
+        height: 230px;
+        align-self: center;
+    }
 }

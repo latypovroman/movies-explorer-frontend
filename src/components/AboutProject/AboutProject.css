@@ -3,7 +3,7 @@
 }
 
 .project__inner {
-    padding: 110px 0;
+    padding: 110px 50px;
     max-width: 1140px;
     margin: 0 auto;
 }
@@ -24,10 +24,11 @@
 .project__text {
     display: flex;
     flex-wrap: wrap;
+    column-gap: 30px;
 }
 
 .project__description {
-    width: 50%;
+    width: calc((100% - 30px)/2);
     color: white;
     margin: 0;
     font-weight: 400;
@@ -77,4 +78,14 @@
     text-align: center;
     color: #8B8B8B;
     margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .project__description_detail {
+        margin-bottom: 90px;
+    }
+
+    .project__inner {
+        padding: 90px 50px;
+    }
 }

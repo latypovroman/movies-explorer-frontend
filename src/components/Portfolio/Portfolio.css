@@ -3,7 +3,7 @@
 }
 
 .portfolio__inner {
-    padding: 0 0 204px;
+    padding: 0 50px 204px;
     margin: 0 auto;
     max-width: 1140px;
 }
@@ -52,4 +52,10 @@
 
 .portfolio__arrow {
     object-fit: contain;
+}
+
+@media screen and (max-width: 768px) {
+    .portfolio__link {
+        font-size: 28px;
+    }
 }
