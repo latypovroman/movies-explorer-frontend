@@ -54,7 +54,7 @@
     object-fit: contain;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 960px) {
     .portfolio__link {
         font-size: 28px;
     }

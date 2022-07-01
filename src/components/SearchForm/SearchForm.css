@@ -5,7 +5,7 @@
 .search__inner {
     margin: 0 auto;
     max-width: 1140px;
-    padding: 60px 0 0;
+    padding: 60px 70px 0;
 }
 
 .search__input {
@@ -38,6 +38,7 @@
     float: right;
     position: relative;
     bottom: 40px;
+    z-index: 1;
     right: 6px;
     border: none;
     cursor: pointer;
@@ -80,4 +81,14 @@
     height: 20px;
     width: 36px;
     object-fit: cover;
+}
+
+@media screen and (max-width: 960px) {
+    .search__inner {
+        padding: 80px 30px 0;
+    }
+
+    .search__switch {
+        padding-bottom: 50px;
+    }
 }

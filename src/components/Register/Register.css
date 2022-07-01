@@ -1,4 +1,8 @@
 .sign {
+    min-height: 100vh;
+}
+
+.sign__container {
     padding-top: 70px;
     max-width: 396px;
     margin: 0 auto;
@@ -58,11 +62,14 @@
 }
 
 .form__button {
-    margin: 134px auto 16px;
+    margin: 134px 0 16px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
     border: none;
     background-color: #4285F4;
     border-radius: 3px;
-    padding: 13px 126px;
+    padding: 13px 125px 15px;
     color: white;
     cursor: pointer;
     transition: all 0.3s ease-in;
@@ -84,4 +91,16 @@
     color: #4285F4;
     text-decoration: none;
     margin-left: 6px;
+}
+
+@media screen and (max-width: 960px) {
+    .sign {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sign__container {
+        padding-top: 0;
+    }
 }

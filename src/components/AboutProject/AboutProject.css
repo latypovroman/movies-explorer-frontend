@@ -80,7 +80,7 @@
     margin: 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 960px) {
     .project__description_detail {
         margin-bottom: 90px;
     }

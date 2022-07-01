@@ -59,7 +59,7 @@
     line-height: 17px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 960px) {
     .techs__inner {
         padding: 90px 50px;
     }

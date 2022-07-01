@@ -30,6 +30,7 @@
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
+    margin: 20px 0;
 }
 
 .footer__navigation {
@@ -51,7 +52,7 @@
     opacity: 0.8;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 960px) {
     .footer__inner {
         padding: 0 30px;
     }
