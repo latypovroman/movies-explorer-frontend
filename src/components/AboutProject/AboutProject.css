@@ -23,12 +23,10 @@
 
 .project__text {
     display: flex;
-    flex-wrap: wrap;
     column-gap: 30px;
 }
 
 .project__description {
-    width: calc((100% - 30px)/2);
     color: white;
     margin: 0;
     font-weight: 400;
@@ -87,5 +85,54 @@
 
     .project__inner {
         padding: 90px 50px;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .project__inner {
+        padding: 70px 18px;
+    }
+
+    .project__title {
+        font-size: 18px;
+        line-height: 22px;
+        letter-spacing: -0.04em;
+        margin: 0 0 28px 0;
+    }
+
+    .project__text {
+        flex-direction: column;
+    }
+
+    .project__container {
+        padding-top: 60px;
+    }
+
+    .project__description_short {
+        font-size: 18px;
+        line-height: 22px;
+        letter-spacing: -0.04em;
+    }
+
+    .project__description_detail {
+        font-size: 11px;
+        line-height: 16px;
+        margin-bottom: 56px;
+    }
+
+    .project__visual {
+        padding-top: 4px;
+    }
+
+    .project__visual-description {
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    .project__visual-bar {
+        padding-top: 11px;
+        padding-bottom: 11px;
+        font-size: 11px;
+        line-height: 13px;
     }
 }

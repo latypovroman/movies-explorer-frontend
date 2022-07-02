@@ -44,3 +44,18 @@
         align-self: center;
     }
 }
+
+@media screen and (max-width: 660px) {
+    .promo__container {
+        padding: 183px 0 40px;
+    }
+
+    .promo__title {
+        font-weight: 400;
+        font-size: 31px;
+        line-height: 39px;
+        max-width: 626px;
+        width: auto;
+        letter-spacing: -0.04em;
+    }
+}

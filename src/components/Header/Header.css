@@ -34,3 +34,9 @@
         padding: 18px 30px;
     }
 }
+
+@media screen and (max-width: 660px) {
+    .header__container {
+        padding: 18px 14px;
+    }
+}
