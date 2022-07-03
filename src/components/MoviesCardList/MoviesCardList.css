@@ -60,3 +60,14 @@
         max-width: 1140px;
     }
 }
+
+@media screen and (max-width: 560px) {
+    .card-list {
+        grid-template-columns: repeat(1, 1fr);
+        row-gap: 20px;
+    }
+
+    .cards__inner {
+        padding: 50px 10px 160px;
+    }
+}

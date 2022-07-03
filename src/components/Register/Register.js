@@ -7,7 +7,7 @@ const Register = () => {
     return (
         <div className="sign">
             <div className="sign__container">
-                <img src={logo} alt="Логотип"/>
+                <img className="sign__logo" src={logo} alt="Логотип"/>
                 <h2 className="sign__title">Добро пожаловать!</h2>
                 <form className="form">
                     <p className="form__description">Имя</p>

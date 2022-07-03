@@ -92,3 +92,17 @@
         padding-bottom: 50px;
     }
 }
+
+@media screen and (max-width: 660px) {
+    .search__inner {
+        padding: 80px 14px 0;
+    }
+
+    .search__input::placeholder {
+        font-size: 11px;
+    }
+
+    .search__switch-description {
+        font-size: 11px;
+    }
+}

@@ -16,6 +16,10 @@
     color: white;
 }
 
+.form {
+    min-width: 396px;
+}
+
 .form__description {
     font-weight: 400;
     font-size: 10px;
@@ -69,7 +73,9 @@
     border: none;
     background-color: #4285F4;
     border-radius: 3px;
-    padding: 13px 125px 15px;
+    padding: 13px 0 15px;
+    width: 100%;
+    max-width: 396px;
     color: white;
     cursor: pointer;
     transition: all 0.3s ease-in;
@@ -85,6 +91,7 @@
     line-height: 17px;
     text-align: center;
     color: #8B8B8B;
+    margin: 0;
 }
 
 .sign__redirect-link {
@@ -102,5 +109,34 @@
 
     .sign__container {
         padding-top: 0;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .sign {
+        padding: 0 30px;
+    }
+
+    .form {
+        min-width: 260px;
+    }
+
+    .sign__logo {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .sign__title {
+        margin: 50px 0 80px;
+        text-align: center;
+    }
+
+    .form__button {
+        margin: 75px 0 16px;
+    }
+
+    .sign__redirect-text {
+        font-size: 12px;
+        line-height: 15px;
     }
 }

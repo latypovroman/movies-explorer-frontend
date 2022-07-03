@@ -15,6 +15,7 @@
 .profile__info {
     max-width: 410px;
     margin: 0 auto 203px;
+    padding: 0 30px;
 }
 
 .profile__block {
@@ -64,4 +65,19 @@
 
 .profile__button_logout {
     color: #EE3465;
+}
+
+@media screen and (max-width: 560px) {
+    .profile {
+        padding: 70px 0 40px;
+    }
+
+    .profile__info {
+        margin-bottom: 75px;
+    }
+
+    .profile__button {
+        font-size: 12px;
+        line-height: 15px;
+    }
 }

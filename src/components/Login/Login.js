@@ -7,7 +7,7 @@ const Login = () => {
     return (
         <div className="sign">
             <div className="sign__container">
-                <img src={logo} alt="Логотип"/>
+                <img className="sign__logo" src={logo} alt="Логотип"/>
                 <h2 className="sign__title">Рады видеть!</h2>
                 <form className="form">
                     <p className="form__description">E-mail</p>
