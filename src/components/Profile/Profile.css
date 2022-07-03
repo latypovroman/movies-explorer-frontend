@@ -56,7 +56,7 @@
 }
 
 .profile__button:hover {
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 .profile__button_edit {
@@ -65,6 +65,15 @@
 
 .profile__button_logout {
     color: #EE3465;
+}
+
+.profile__buttons-error {
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    color: #FF004C;
+    text-align: center;
 }
 
 @media screen and (max-width: 560px) {
@@ -79,5 +88,11 @@
     .profile__button {
         font-size: 12px;
         line-height: 15px;
+    }
+
+    .profile__buttons {
+        position: absolute;
+        bottom: 40px;
+        left: calc(50% - 124px);
     }
 }

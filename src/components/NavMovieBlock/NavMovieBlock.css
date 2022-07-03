@@ -18,6 +18,10 @@
     align-items: center;
 }
 
+.active {
+    font-weight: 500;
+}
+
 .nav-movie__profile-logo {
     padding: 10px;
     margin-left: 13px;

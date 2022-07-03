@@ -64,7 +64,7 @@
     }
 
     .not-found__back-button {
-        justify-self: end;
-        margin-top: 120px;
+        position: absolute;
+        bottom: 30px;
     }
 }
