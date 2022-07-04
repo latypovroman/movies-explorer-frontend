@@ -2,9 +2,13 @@ import React from 'react';
 import movieCover from '../../images/movie-cover.png'
 import './Card.css'
 import { useLocation } from "react-router-dom";
-import deleteCard from "../../images/delete.svg";
-import unbookmark from "../../images/save.svg";
-import bookmark from "../../images/save-transparent.svg";
+// Использую после зачета
+// import deleteCard from "../../images/delete.svg";
+// import unbookmark from "../../images/save.svg";
+// import bookmark from "../../images/save-transparent.svg";
+import deleteCard from "../../images/wbutton-x.svg";
+import unbookmark from "../../images/wbutton-unsave.svg";
+import bookmark from "../../images/wbutton-save.svg";
 
 
 const Card = () => {

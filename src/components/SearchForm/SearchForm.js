@@ -15,7 +15,7 @@ const SearchForm = () => {
     return (
         <div className="search">
             <div className="search__inner">
-                <input className="search__input" placeholder="Фильм"/>
+                <input className="search__input" placeholder="Фильм" required/>
                 <button className="search__button"><img src={find} alt="Иконка поиска"/></button>
                 <div className="search__switch">
                     <button className="search__switch-switcher" onClick={handleSwitch}>

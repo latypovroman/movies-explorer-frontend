@@ -1,6 +1,6 @@
 import React from 'react';
 import './Portfolio.css';
-import linkArrow from '../../images/link-arrow.png'
+import linkArrow from '../../images/link-arrow.svg'
 
 const Portfolio = () => {
     return (
