@@ -1,0 +1,138 @@
+.project {
+    background-color: #202020;
+}
+
+.project__inner {
+    padding: 110px 50px;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.project__title {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    margin: 0 0 23px 0;
+    color: white;
+}
+
+.project__container {
+    border-top: 1px solid #DADADA;
+    padding-top: 69px;
+}
+
+.project__text {
+    display: flex;
+    column-gap: 30px;
+}
+
+.project__description {
+    color: white;
+    margin: 0;
+    font-weight: 400;
+}
+
+.project__description_short {
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 26px;
+}
+
+.project__description_detail {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 110px;
+}
+
+.project__visual {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.project__visual-bar {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    margin-bottom: 14px;
+}
+
+.project__visual-bar_backend {
+    background-color: #3DDC84;
+    color: black;
+}
+
+.project__visual-bar_frontend {
+    background-color: #303030;
+    color: white;
+}
+
+.project__visual-description {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #8B8B8B;
+    margin: 0;
+}
+
+@media screen and (max-width: 960px) {
+    .project__description_detail {
+        margin-bottom: 90px;
+    }
+
+    .project__inner {
+        padding: 90px 50px;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .project__inner {
+        padding: 70px 18px;
+    }
+
+    .project__title {
+        font-size: 18px;
+        line-height: 22px;
+        letter-spacing: -0.04em;
+        margin: 0 0 28px 0;
+    }
+
+    .project__text {
+        flex-direction: column;
+    }
+
+    .project__container {
+        padding-top: 60px;
+    }
+
+    .project__description_short {
+        font-size: 18px;
+        line-height: 22px;
+        letter-spacing: -0.04em;
+    }
+
+    .project__description_detail {
+        font-size: 11px;
+        line-height: 16px;
+        margin-bottom: 56px;
+    }
+
+    .project__visual {
+        padding-top: 4px;
+    }
+
+    .project__visual-description {
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    .project__visual-bar {
+        padding-top: 11px;
+        padding-bottom: 11px;
+        font-size: 11px;
+        line-height: 13px;
+    }
+}
