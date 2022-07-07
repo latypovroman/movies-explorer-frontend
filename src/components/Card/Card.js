@@ -1,5 +1,4 @@
 import React from 'react';
-import movieCover from '../../images/movie-cover.png'
 import './Card.css'
 import { useLocation } from "react-router-dom";
 // Использую после зачета
@@ -11,10 +10,24 @@ import unbookmark from "../../images/wbutton-unsave.svg";
 import bookmark from "../../images/wbutton-save.svg";
 
 
-const Card = () => {
+const Card = ({ movie }) => {
 
     const [isSaved, setIsSaved] = React.useState(false);
     const location = useLocation();
+
+    const imageUrl = () => {
+        return `https://api.nomoreparties.co${movie.image.url}`
+    }
+
+    const lengthToString = (duration) => {
+        if (duration <= 59) {
+            return `${duration}м`
+        }
+
+        if (duration > 59) {
+            return `${Math.floor(duration / 60)}ч ${duration % 60}м`
+        }
+    }
 
     const handleSave = () => {
         setIsSaved(!isSaved);
@@ -32,13 +45,13 @@ const Card = () => {
 
     return (
         <li className="card">
-            <img className="card__image" src={movieCover} alt="Постер фильма"/>
+            <img className="card__image" src={imageUrl()} alt="Постер фильма"/>
             <div className="card__panel">
-                <h2 className="card__title">33 слова о дизайне</h2>
+                <h2 className="card__title">{movie.nameRU}</h2>
                 <button className="card__save-btn" onClick={handleSave}>
                     {handleImage()}
                 </button>
-                <p className="card__length">1ч42м</p>
+                <p className="card__length">{lengthToString(movie.duration)}</p>
             </div>
         </li>
     );

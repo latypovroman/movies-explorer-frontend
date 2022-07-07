@@ -4,23 +4,29 @@ import find from '../../images/find.svg'
 import switchOn from '../../images/switch-on.svg'
 import switchOff from '../../images/switch-off.svg'
 
-const SearchForm = () => {
+const SearchForm = ({ handleSearchText, showShorts, handleShortsTumbler }) => {
 
-    const [isSwitchOn, setIsSwitchOn] = React.useState(true);
-
-    const handleSwitch = () => {
-        setIsSwitchOn(!isSwitchOn);
+    const onInputChange = (evt) => {
+        handleSearchText(evt.target.value)
     }
 
     return (
         <div className="search">
             <div className="search__inner">
-                <input className="search__input" placeholder="Фильм" required/>
+                <input
+                    type="text"
+                    className="search__input"
+                    placeholder="Фильм"
+                    required
+                    name="search"
+                    // value={search}
+                    onChange={onInputChange}
+                />
                 <button className="search__button"><img src={find} alt="Иконка поиска"/></button>
                 <div className="search__switch">
-                    <button className="search__switch-switcher" onClick={handleSwitch}>
+                    <button className="search__switch-switcher" onClick={handleShortsTumbler}>
                         {
-                            isSwitchOn
+                            showShorts
                                 ? <img className="search__switch-image" src={switchOn} alt="Включеный чекбокс"/>
                                 : <img className="search__switch-image" src={switchOff} alt="Выключеный чекбокс"/>
                         }

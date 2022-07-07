@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../react-mesto-api-full/frontend/.idea/frontend.iml" filepath="$PROJECT_DIR$/../react-mesto-api-full/frontend/.idea/frontend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../mesto/.idea/mesto.iml" filepath="$PROJECT_DIR$/../mesto/.idea/mesto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../movies-explorer-api/.idea/movies-explorer-api.iml" filepath="$PROJECT_DIR$/../movies-explorer-api/.idea/movies-explorer-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/movies-explorer-frontend.iml" filepath="$PROJECT_DIR$/.idea/movies-explorer-frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../todo-react/.idea/todo-react.iml" filepath="$PROJECT_DIR$/../todo-react/.idea/todo-react.iml" />
     </modules>
   </component>
 </project>

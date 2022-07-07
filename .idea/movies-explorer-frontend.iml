@@ -9,6 +9,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="frontend" />
-    <orderEntry type="module" module-name="mesto" />
+    <orderEntry type="module" module-name="movies-explorer-api" />
+    <orderEntry type="module" module-name="todo-react" />
   </component>
 </module>
