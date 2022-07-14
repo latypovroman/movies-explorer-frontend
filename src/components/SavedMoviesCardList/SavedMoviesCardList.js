@@ -6,7 +6,9 @@ const SavedMoviesCardList = () => {
         <section className="cards">
             <div className="cards__inner">
                 <ul className="card-list card-list_saved-movies">
-                    { [...Array(3)].map((card, index) => <Card key={index}/>) }
+                    { [...Array(3)].map((card, index) =>
+                        <Card key={index}/>)
+                    }
                 </ul>
             </div>
         </section>

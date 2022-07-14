@@ -1,7 +1,7 @@
 import React from 'react';
 import './Profile.css';
 
-const Profile = () => {
+const Profile = ({ signOut }) => {
     return (
         <section className="profile">
             <p className="profile__greeting">Привет, username!</p>
@@ -18,7 +18,11 @@ const Profile = () => {
             <div className="profile__buttons">
                 <span className="profile__buttons-error">При обновлении профиля произошла ошибка.</span>
                 <button className="profile__button profile__button_edit">Редактировать</button>
-                <button className="profile__button profile__button_logout">Выйти из аккаунта</button>
+                <button
+                    onClick={signOut}
+                    className="profile__button profile__button_logout">
+                    Выйти из аккаунта
+                </button>
             </div>
         </section>
     );

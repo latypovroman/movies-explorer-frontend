@@ -3,7 +3,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import moviesApi from "../../utils/MoviesApi";
 
-const Movies = () => {
+const Movies = ({ handleSaveCard, addSavedMovie, handleSaveImage }) => {
 
     const [movieList, setMovieList] = React.useState([]);
     const [filter, setFilter] = React.useState({
@@ -44,6 +44,7 @@ const Movies = () => {
         })
     }, [filter, movieList])
 
+
     const handleSearchText = (value) => {
         value = value.toLowerCase();
         setFilter({
@@ -60,7 +61,12 @@ const Movies = () => {
                 filter={filter}
                 handleSearchText={handleSearchText}
             />
-            <MoviesCardList movieList={filteredMovieList}/>
+            <MoviesCardList
+                movieList={filteredMovieList}
+                handleSaveCard={handleSaveCard}
+                addSavedMovie={addSavedMovie}
+                handleSaveImage={handleSaveImage}
+            />
         </main>
     );
 };

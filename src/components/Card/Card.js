@@ -1,6 +1,5 @@
 import React from 'react';
 import './Card.css'
-import { useLocation } from "react-router-dom";
 // Использую после зачета
 // import deleteCard from "../../images/delete.svg";
 // import unbookmark from "../../images/save.svg";
@@ -10,14 +9,23 @@ import unbookmark from "../../images/wbutton-unsave.svg";
 import bookmark from "../../images/wbutton-save.svg";
 
 
-const Card = ({ movie }) => {
+const Card = ({ movie, saveMovie }) => {
 
-    const [isSaved, setIsSaved] = React.useState(false);
-    const location = useLocation();
+    const addToSaveList = () => saveMovie(movie);
 
     const imageUrl = () => {
         return `https://api.nomoreparties.co${movie.image.url}`
     }
+
+    // const handleImage = () => {
+    //     if (location.pathname === '/saved-movies') {
+    //         return <img className="card__delete-icon" src={deleteCard} alt="Значок удаления закладки"/>
+    //     } else if (isSaved) {
+    //         return <img src={unbookmark} alt="Значок закладки активный"/>
+    //     } else {
+    //         return <img src={bookmark} alt="Значок закладки неактивный"/>
+    //     }
+    // }
 
     const lengthToString = (duration) => {
         if (duration <= 59) {
@@ -29,27 +37,13 @@ const Card = ({ movie }) => {
         }
     }
 
-    const handleSave = () => {
-        setIsSaved(!isSaved);
-    }
-
-    const handleImage = () => {
-        if (location.pathname === '/saved-movies') {
-            return <img className="card__delete-icon" src={deleteCard} alt="Значок удаления закладки"/>
-        } else if (isSaved) {
-            return <img src={unbookmark} alt="Значок закладки активный"/>
-        } else {
-            return <img src={bookmark} alt="Значок закладки неактивный"/>
-        }
-    }
-
     return (
         <li className="card">
             <img className="card__image" src={imageUrl()} alt="Постер фильма"/>
             <div className="card__panel">
                 <h2 className="card__title">{movie.nameRU}</h2>
-                <button className="card__save-btn" onClick={handleSave}>
-                    {handleImage()}
+                <button className="card__save-btn" onClick={addToSaveList}>
+                    {/*{handleImage()}*/}
                 </button>
                 <p className="card__length">{lengthToString(movie.duration)}</p>
             </div>

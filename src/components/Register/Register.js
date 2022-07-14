@@ -2,8 +2,29 @@ import React from 'react';
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import './Register.css';
+import SignInput from "../SignInput/SignInput";
 
-const Register = () => {
+const Register = ({ handleRegister }) => {
+
+    const [userData, setUserData] = React.useState({
+        email: '',
+        password: '',
+        name: '',
+    })
+
+    const handleDataChange = (evt) => {
+        setUserData({
+            ...userData,
+            [evt.target.name]: evt.target.value
+        })
+        console.log(userData)
+    }
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        handleRegister(userData)
+    }
+
     return (
         <div className="sign">
             <div className="sign__container">
@@ -11,15 +32,22 @@ const Register = () => {
                 <h2 className="sign__title">Добро пожаловать!</h2>
                 <form className="form">
                     <p className="form__description">Имя</p>
-                    <input className="form__input" type="text" required/>
-                    <p className="form__error-text" id="name-error"></p>
+                    <SignInput handleDataChange={handleDataChange} type="name"/>
                     <p className="form__description">E-mail</p>
-                    <input className="form__input" type="email" required/>
-                    <p className="form__error-text" id="email-error"></p>
+                    <SignInput handleDataChange={handleDataChange} type="email"/>
                     <p className="form__description">Пароль</p>
-                    <input className="form__input form__input_error" type="password" required/>
-                    <p className="form__error-text form__error-text_active" id="password-error">Что-то пошло не так...</p>
-                    <button className="form__button">Зарегистрироваться</button>
+                    <SignInput handleDataChange={handleDataChange} type="password"/>
+                    {/*<input className="form__input" type="text" required onClick={handleDataChange}/>*/}
+                    {/*<p className="form__error-text" id="name-error"></p>*/}
+                    {/*<input className="form__input" type="email" required onClick={handleDataChange}/>*/}
+                    {/*<p className="form__error-text" id="email-error"></p>*/}
+                    {/*<input className="form__input form__input_error" type="password" required onClick={handleDataChange}/>*/}
+                    {/*<p className="form__error-text form__error-text_active" id="password-error">Что-то пошло не так...</p>*/}
+                    <button
+                        className="form__button"
+                        onClick={handleSubmit}>
+                        Зарегистрироваться
+                    </button>
                 </form>
                 <p className="sign__redirect-text">
                     Уже зарегистрированы?
