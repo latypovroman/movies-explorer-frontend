@@ -1,31 +1,37 @@
 import React from 'react';
 import './Card.css'
 // Использую после зачета
-// import deleteCard from "../../images/delete.svg";
-// import unbookmark from "../../images/save.svg";
-// import bookmark from "../../images/save-transparent.svg";
-import deleteCard from "../../images/wbutton-x.svg";
-import unbookmark from "../../images/wbutton-unsave.svg";
-import bookmark from "../../images/wbutton-save.svg";
+import deleteCard from "../../images/delete.svg";
+import unbookmark from "../../images/save.svg";
+import bookmark from "../../images/save-transparent.svg";
+// import deleteCard from "../../images/wbutton-x.svg";
+// import unbookmark from "../../images/wbutton-unsave.svg";
+// import bookmark from "../../images/wbutton-save.svg";
+import { useLocation } from "react-router-dom";
+import SaveMovieButton from "../SaveMovieButton/SaveMovieButton";
+import DeleteMovieButton from "../DeleteMovieButton/DeleteMovieButton";
+import DeleteSaveMovieButton from "../DeleteSaveMovieButton/DeleteSaveMovieButton";
 
 
-const Card = ({ movie, saveMovie }) => {
+const Card = ({ movie, saveMovie, deleteMovie, isSaved }) => {
 
-    const addToSaveList = () => saveMovie(movie);
+    const location = useLocation();
+    const onSaveClick = () => saveMovie(movie);
+    const onDeleteClick = () => deleteMovie(movie);
 
     const imageUrl = () => {
         return `https://api.nomoreparties.co${movie.image.url}`
     }
 
-    // const handleImage = () => {
-    //     if (location.pathname === '/saved-movies') {
-    //         return <img className="card__delete-icon" src={deleteCard} alt="Значок удаления закладки"/>
-    //     } else if (isSaved) {
-    //         return <img src={unbookmark} alt="Значок закладки активный"/>
-    //     } else {
-    //         return <img src={bookmark} alt="Значок закладки неактивный"/>
-    //     }
-    // }
+    const handleCardButton = () => {
+        if (location.pathname === '/saved-movies') {
+            return <DeleteSaveMovieButton onButtonClick={onDeleteClick}/>
+        } else if (isSaved) {
+            return <DeleteMovieButton onButtonClick={onDeleteClick}/>
+        } else {
+            return <SaveMovieButton onButtonClick={onSaveClick}/>
+        }
+    }
 
     const lengthToString = (duration) => {
         if (duration <= 59) {
@@ -39,12 +45,13 @@ const Card = ({ movie, saveMovie }) => {
 
     return (
         <li className="card">
-            <img className="card__image" src={imageUrl()} alt="Постер фильма"/>
+            <img
+                className="card__image"
+                src={ location.pathname === '/movies' ? imageUrl() : movie.image} //данные от разных апи в разном виде
+                alt="Постер фильма"/>
             <div className="card__panel">
                 <h2 className="card__title">{movie.nameRU}</h2>
-                <button className="card__save-btn" onClick={addToSaveList}>
-                    {/*{handleImage()}*/}
-                </button>
+                    { handleCardButton() }
                 <p className="card__length">{lengthToString(movie.duration)}</p>
             </div>
         </li>

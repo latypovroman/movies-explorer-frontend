@@ -2,7 +2,14 @@ import React from 'react';
 import Card from "../Card/Card";
 import './MoviesCardList.css'
 
-const MoviesCardList = ({ movieList, handleSaveCard, addSavedMovie, handleSaveImage }) => {
+const MoviesCardList = ({ movieList, addSavedMovie, savedMovies, deleteSavedMovie }) => {
+
+    const isSaved = ((movie) => {
+        return savedMovies.find(saved => {
+            return saved.movieId === movie.id
+        })
+    })
+
 
     return (
         <section className="cards">
@@ -11,11 +18,11 @@ const MoviesCardList = ({ movieList, handleSaveCard, addSavedMovie, handleSaveIm
                     {
                         movieList.map((movie) =>
                         <Card
+                            isSaved={isSaved(movie)}
                             movie={movie}
                             key={movie.id}
-                            handleSave={handleSaveCard}
                             saveMovie={addSavedMovie}
-                            handleImage={handleSaveImage}
+                            deleteMovie={deleteSavedMovie}
                         />)
                     }
                 </ul>

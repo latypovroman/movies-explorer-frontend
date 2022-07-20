@@ -28,6 +28,7 @@ const Header = () => {
                         {// Один роут на три адреса
                             ["/movies", "/saved-movies", "profile"].map((path) =>
                                 <Route path={path}
+                                       key={path}
                                        element={
                                             <NavMovieBlock
                                                    isBurgerOpen={isBurgerOpen}

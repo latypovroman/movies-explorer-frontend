@@ -15,14 +15,11 @@ class MoviesApi {
     }
 }
 
-// const token = localStorage.getItem('jwt');
-
 const moviesApi = new MoviesApi({
     url: 'https://api.nomoreparties.co/beatfilm-movies',
     headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${token}`,
     },
 });
 

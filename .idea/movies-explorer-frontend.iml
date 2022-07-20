@@ -8,9 +8,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="frontend" />
     <orderEntry type="module" module-name="movies-explorer-api" />
+    <orderEntry type="module" module-name="movies-explorer" />
     <orderEntry type="module" module-name="todo-react" />
-    <orderEntry type="module" module-name="mesto-backend" />
   </component>
 </module>

@@ -14,42 +14,54 @@ import deleteCard from "../../images/wbutton-x.svg";
 import unbookmark from "../../images/wbutton-unsave.svg";
 import bookmark from "../../images/wbutton-save.svg";
 import mainApi from "../../utils/MainApi";
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 
 function App() {
 
     const location = useLocation();
     const navigate = useNavigate();
-    const jwt = localStorage.getItem('jwt');
     const [savedMovies, setSavedMovies] = React.useState([]);
-    // const [loggedIn, setLoggedIn] = React.useState(false);
-    const [auth, setAuth] = React.useState({
-        email: "",
-        name: ""
-    })
+    const [auth, setAuth] = React.useState({});
 
     useEffect(() => {
-        if (!auth.email || !auth.name) {
-            tokenCheck();
-        }
+        tokenCheck();
     }, []);
 
+    useEffect(() => {
+        getThisUserSavedMovies();
+    }, [auth]);
+
     function tokenCheck() {
+        const jwt = localStorage.getItem('jwt');
         if (jwt) {
-            return getUserInfo(jwt)
+            return getUserInfo();
         }
 
     }
 
-    const getUserInfo = (jwt) => {
-        return mainApi.getUserInfo(jwt)
-            .then((data) => {
-                setAuth({
-                    ...auth,
-                    email: data.email,
-                    name: data.name
+    function getThisUserSavedMovies() {
+        return mainApi.getSavedMovies()
+            .then((movies) => {
+                const userSavedMovies = movies.filter((movie) => {
+                    return movie.owner === auth.id
                 });
-                navigate('/movies');
+                setSavedMovies(userSavedMovies);
+            })
+            .catch((data) => {
+                console.log(data);
+            })
+    }
+
+    const getUserInfo = () => {
+        return mainApi.getUserInfo()
+            .then((user) => {
+                    setAuth({
+                        ...auth,
+                        id: user._id,
+                        email: user.email,
+                        name: user.name
+                    });
             })
             .catch((data) => console.log(data))
     }
@@ -67,6 +79,7 @@ function App() {
                 mainApi.getUserInfo(user.token)
                     .then((user) => {
                         setAuth({
+                            id: user._id,
                             email: user.email,
                             name: user.name
                         });
@@ -76,75 +89,92 @@ function App() {
             .catch(data => console.log(data));
     }
 
+    const changeUserInfo = ({ email, name }) => {
+        mainApi.patchUserInfo(email, name)
+            .then((user) => {
+                setAuth({
+                    ...auth,
+                    id: user._id,
+                    email: user.email,
+                    name: user.name
+                });
+            })
+            .catch(data => console.log(data));
+    }
+
     const signOut = () => {
         localStorage.removeItem('jwt');
         navigate('/signin');
         setAuth({
             name: '',
-            email: ''
+            email: '',
+            id: '',
         })
     }
 
     const addSavedMovie = (movie) => {
         mainApi.addMovie(movie)
             .then((movie) => {
-                setSavedMovies({
+                setSavedMovies([
                     movie,
                     ...savedMovies,
-                })
+                ])
             })
             .catch((data) => {
                 console.log(data);
             })
     }
 
-    // const handleSaveImage = (isSaved) => {
-    //     if (location.pathname === '/saved-movies') {
-    //         return <img className="card__delete-icon" src={deleteCard} alt="Значок удаления закладки"/>
-    //     } else if (isSaved) {
-    //         return <img src={unbookmark} alt="Значок закладки активный"/>
-    //     } else {
-    //         return <img src={bookmark} alt="Значок закладки неактивный"/>
-    //     }
-    // }
-
+    const deleteSavedMovie = (movieForDelete) => {
+        mainApi.deleteMovie(movieForDelete._id)
+            .then(() => {
+                setSavedMovies(savedMovies.filter((movie) => {
+                    return movie._id !== movieForDelete._id
+                }))
+            })
+            .catch(data => console.log(data));
+    }
 
     const checkHeaderPath = () => {
         const routesWithHeader = ["/", "/movies", "/saved-movies", "/profile"];
 
-        return routesWithHeader.map((path, index) =>
+        return routesWithHeader.map((path) =>
             location.pathname === path
-                ? <Header key={index}/>
+                ? <Header key={path}/>
                 : null)
     }
 
   return (
-      <div className="page">
-          { checkHeaderPath() }
-          <Routes>
-              <Route path="/" element={ <><Main/><Footer/></> }/>
-              <Route path="/signup" element={ <Register handleRegister={handleRegister}/> }/>
-              <Route path="/signin" element={ <Login handleLogin={handleLogin}/> }/>
-              <Route path="/movies" element={
-                  <>
-                      <Movies
-                          addSavedMovie={addSavedMovie}
-                          // handleSaveCard={handleSaveCard}
-                          // handleSaveImage={handleSaveImage}
-                      />
-                      <Footer/>
-                  </>
-              }/>
-              <Route path="/saved-movies" element={
-                  <>
-                      <SavedMovies/>
-                      <Footer/>
-                  </>
-              }/>
-              <Route path="/profile" element={ <Profile signOut={signOut}/> }/>
-              <Route path="/*" element={ <NotFound/> }/>
-          </Routes>
-      </div>
+      <CurrentUserContext.Provider value={auth}>
+          <div className="page">
+              { checkHeaderPath() }
+              <Routes>
+                  <Route path="/" element={ <><Main/><Footer/></> }/>
+                  <Route path="/signup" element={ <Register handleRegister={handleRegister}/> }/>
+                  <Route path="/signin" element={ <Login handleLogin={handleLogin}/> }/>
+                  <Route path="/movies" element={
+                      <>
+                          <Movies
+                              addSavedMovie={addSavedMovie}
+                              savedMovies={savedMovies}
+                              deleteSavedMovie={deleteSavedMovie}
+                          />
+                          <Footer/>
+                      </>
+                  }/>
+                  <Route path="/saved-movies" element={
+                      <>
+                          <SavedMovies savedMovies={savedMovies} deleteMovie={deleteSavedMovie}/>
+                          <Footer/>
+                      </>
+                  }/>
+                  <Route path="/profile" element={
+                      <Profile signOut={signOut} changeProfileInfo={changeUserInfo}/>
+                  }/>
+                  <Route path="/*" element={ <NotFound/> }/>
+              </Routes>
+          </div>
+      </CurrentUserContext.Provider>
   );
 }
 

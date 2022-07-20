@@ -1,7 +1,9 @@
+
 class MainApi {
     constructor({ url, headers }) {
         this._url = url;
         this._headers = headers;
+        this._jwt = localStorage.getItem('jwt');
     }
 
     _isResOk(res) {
@@ -13,7 +15,8 @@ class MainApi {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({ email, password, name }),
-        }).then(this._isResOk)
+        })
+            .then(this._isResOk)
     }
 
     authorize(email, password) {
@@ -25,14 +28,27 @@ class MainApi {
             .then(this._isResOk)
     }
 
-    getUserInfo(jwt) {
+    getUserInfo() {
         return fetch(`${this._url}/users/me`, {
             method: 'GET',
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${jwt}`,
+                Authorization: `Bearer ${this._jwt}`,
             }
+        })
+            .then(this._isResOk)
+    }
+
+    patchUserInfo(email, name) {
+        return fetch(`${this._url}/users/me`, {
+            method: 'PATCH',
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                authorization: `Bearer ${this._jwt}`,
+            },
+            body: JSON.stringify({ email, name })
         })
             .then(this._isResOk)
     }
@@ -40,26 +56,67 @@ class MainApi {
     addMovie(data) {
         const {
             duration,
+            country,
+            director,
+            year,
+            description,
+            trailerLink,
             nameRU,
             nameEN,
             id
         } = data;
 
-        const imageUrl = (data) => {
+        const imageUrl = () => {
             return `https://api.nomoreparties.co${data.image.url}`
+        }
+        const thumbnailUrl = () => {
+            return `https://api.nomoreparties.co${data.image.formats.thumbnail.url}`
         }
 
         return fetch(`${this._url}/movies/`, {
             method: "POST",
-            headers: this._headers,
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                authorization: `Bearer ${this._jwt}`,
+            },
             body: JSON.stringify({
                 movieId: id,
                 duration,
-                image: imageUrl(data),
+                country,
+                director,
+                trailerLink,
+                year,
+                description,
+                thumbnail: thumbnailUrl(),
+                image: imageUrl(),
                 nameRU,
                 nameEN,
             })
         }).then(this._isResOk);
+    }
+
+    getSavedMovies() {
+        return fetch(`${this._url}/movies/`,{
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                authorization: `Bearer ${this._jwt}`,
+            }
+        })
+            .then(this._isResOk)
+    }
+
+    deleteMovie(id) {
+        return fetch(`${this._url}/movies/${id}`, {
+            method: 'DELETE',
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                authorization: `Bearer ${this._jwt}`,
+            }
+        })
+            .then(this._isResOk)
     }
 }
 
