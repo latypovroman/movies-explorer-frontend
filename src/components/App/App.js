@@ -126,10 +126,14 @@ function App() {
     }
 
     const deleteSavedMovie = (movieForDelete) => {
-        mainApi.deleteMovie(movieForDelete._id)
+        const getMainId = savedMovies.find((movie) => {
+            return movie.movieId === (movieForDelete.id || movieForDelete.movieId)
+        });
+
+        mainApi.deleteMovie(getMainId._id)
             .then(() => {
                 setSavedMovies(savedMovies.filter((movie) => {
-                    return movie._id !== movieForDelete._id
+                    return movie._id !== getMainId._id
                 }))
             })
             .catch(data => console.log(data));

@@ -2,6 +2,7 @@ import React, {useMemo} from 'react';
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import moviesApi from "../../utils/MoviesApi";
+import './Movies.css';
 
 const Movies = ({ addSavedMovie, savedMovies, deleteSavedMovie }) => {
 
@@ -61,12 +62,16 @@ const Movies = ({ addSavedMovie, savedMovies, deleteSavedMovie }) => {
                 filter={filter}
                 handleSearchText={handleSearchText}
             />
-            <MoviesCardList
-                movieList={filteredMovieList}
-                addSavedMovie={addSavedMovie}
-                savedMovies={savedMovies}
-                deleteSavedMovie={deleteSavedMovie}
-            />
+            {filteredMovieList.length
+                ? <MoviesCardList
+                    movieList={filteredMovieList}
+                    addSavedMovie={addSavedMovie}
+                    savedMovies={savedMovies}
+                    deleteSavedMovie={deleteSavedMovie}
+                  />
+                : <p className="movies__not-found">Ничего не найдено</p>
+            }
+
         </main>
     );
 };
