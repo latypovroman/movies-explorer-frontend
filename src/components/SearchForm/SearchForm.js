@@ -19,7 +19,6 @@ const SearchForm = ({ handleSearchText, showShorts, handleShortsTumbler }) => {
                     placeholder="Фильм"
                     required
                     name="search"
-                    // value={search}
                     onChange={onInputChange}
                 />
                 <button className="search__button"><img src={find} alt="Иконка поиска"/></button>

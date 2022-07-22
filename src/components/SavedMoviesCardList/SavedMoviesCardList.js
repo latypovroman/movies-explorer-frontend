@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Card from "../Card/Card";
 
 const SavedMoviesCardList = ({ savedMovies, deleteMovie }) => {
-
-
 
     return (
         <section className="cards">

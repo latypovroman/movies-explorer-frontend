@@ -37,7 +37,7 @@ const MoviesCardList = ({ movieList, addSavedMovie, savedMovies, deleteSavedMovi
     useEffect(() => {
         setShownMovieList(movieList.slice(0, deviceLayout.quantity));
 
-    }, [deviceLayout.quantity])
+    }, [deviceLayout.quantity, movieList])
 
     const addMoreCards = () => {
         checkLayoutType();

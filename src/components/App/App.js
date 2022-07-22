@@ -10,12 +10,9 @@ import Profile from "../Profile/Profile";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import NotFound from "../NotFound/NotFound";
-import deleteCard from "../../images/wbutton-x.svg";
-import unbookmark from "../../images/wbutton-unsave.svg";
-import bookmark from "../../images/wbutton-save.svg";
 import mainApi from "../../utils/MainApi";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 function App() {
 
@@ -141,9 +138,9 @@ function App() {
 
     const checkHeaderPath = () => {
         const routesWithHeader = ["/", "/movies", "/saved-movies", "/profile"];
-
+        const { email, name} =  auth;
         return routesWithHeader.map((path) =>
-            location.pathname === path
+            location.pathname === path && (email && name)
                 ? <Header key={path}/>
                 : null)
     }
@@ -157,23 +154,29 @@ function App() {
                   <Route path="/signup" element={ <Register handleRegister={handleRegister}/> }/>
                   <Route path="/signin" element={ <Login handleLogin={handleLogin}/> }/>
                   <Route path="/movies" element={
-                      <>
+                      <PrivateRoute>
                           <Movies
                               addSavedMovie={addSavedMovie}
                               savedMovies={savedMovies}
                               deleteSavedMovie={deleteSavedMovie}
                           />
                           <Footer/>
-                      </>
+                      </PrivateRoute>
                   }/>
                   <Route path="/saved-movies" element={
-                      <>
-                          <SavedMovies savedMovies={savedMovies} deleteMovie={deleteSavedMovie}/>
+                      <PrivateRoute>
+                          <
+                              SavedMovies
+                              savedMovies={savedMovies}
+                              deleteMovie={deleteSavedMovie}
+                          />
                           <Footer/>
-                      </>
+                      </PrivateRoute>
                   }/>
                   <Route path="/profile" element={
-                      <Profile signOut={signOut} changeProfileInfo={changeUserInfo}/>
+                      <PrivateRoute>
+                        <Profile signOut={signOut} changeProfileInfo={changeUserInfo}/>
+                      </PrivateRoute>
                   }/>
                   <Route path="/*" element={ <NotFound/> }/>
               </Routes>

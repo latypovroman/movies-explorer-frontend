@@ -1,12 +1,5 @@
 import React from 'react';
 import './Card.css'
-// Использую после зачета
-import deleteCard from "../../images/delete.svg";
-import unbookmark from "../../images/save.svg";
-import bookmark from "../../images/save-transparent.svg";
-// import deleteCard from "../../images/wbutton-x.svg";
-// import unbookmark from "../../images/wbutton-unsave.svg";
-// import bookmark from "../../images/wbutton-save.svg";
 import { useLocation } from "react-router-dom";
 import SaveMovieButton from "../SaveMovieButton/SaveMovieButton";
 import DeleteMovieButton from "../DeleteMovieButton/DeleteMovieButton";
