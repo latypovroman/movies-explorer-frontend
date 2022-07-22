@@ -38,10 +38,13 @@ const Card = ({ movie, saveMovie, deleteMovie, isSaved }) => {
 
     return (
         <li className="card">
-            <img
-                className="card__image"
-                src={ location.pathname === '/movies' ? imageUrl() : movie.image} //данные от разных апи в разном виде
-                alt="Постер фильма"/>
+            <a target="_blank" href={movie.trailerLink}>
+                <img
+                    className="card__image"
+                    src={ location.pathname === '/movies' ? imageUrl() : movie.image} //данные от разных апи в разном виде
+                    alt="Постер фильма"
+                />
+            </a>
             <div className="card__panel">
                 <h2 className="card__title">{movie.nameRU}</h2>
                     { handleCardButton() }

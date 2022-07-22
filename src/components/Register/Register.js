@@ -1,28 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import './Register.css';
 import SignInput from "../SignInput/SignInput";
+import { useFormWithValidation } from "../../hooks/useValidation";
 
 const Register = ({ handleRegister }) => {
 
-    const [userData, setUserData] = React.useState({
-        email: '',
-        password: '',
-        name: '',
-    })
+    const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+    // const [userData, setUserData] = React.useState({
+    //     email: '',
+    //     password: '',
+    //     name: '',
+    // })
 
-    const handleDataChange = (evt) => {
-        setUserData({
-            ...userData,
-            [evt.target.name]: evt.target.value
-        })
-        console.log(userData)
-    }
+    useEffect(() => {
+        resetForm();
+    }, [resetForm]);
+
+    // const handleDataChange = (evt) => {
+    //     setUserData({
+    //         ...userData,
+    //         [evt.target.name]: evt.target.value
+    //     })
+    //     console.log(userData)
+    // }
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        handleRegister(userData)
+        handleRegister(values);
     }
 
     return (
@@ -30,22 +36,45 @@ const Register = ({ handleRegister }) => {
             <div className="sign__container">
                 <img className="sign__logo" src={logo} alt="Логотип"/>
                 <h2 className="sign__title">Добро пожаловать!</h2>
-                <form className="form">
+                <form className="form" onSubmit={handleSubmit}>
                     <p className="form__description">Имя</p>
-                    <SignInput handleDataChange={handleDataChange} type="name"/>
+                    <
+                        input className="form__input"
+                           type="text"
+                           name="name"
+                           required
+                           onChange={handleChange}
+                           value={values.name || ''}
+                           minLength="2"
+                           maxLength="30"
+                    />
+                    <p className="form__error-text" id="name-error">{errors.name || ''}</p>
                     <p className="form__description">E-mail</p>
-                    <SignInput handleDataChange={handleDataChange} type="email"/>
+                    <
+                        input className="form__input"
+                           type="email"
+                           name="email"
+                           required
+                           onChange={handleChange}
+                           value={values.email || ''}
+                    />
+                    <p className="form__error-text" id="name-error">{errors.email || ''}</p>
                     <p className="form__description">Пароль</p>
-                    <SignInput handleDataChange={handleDataChange} type="password"/>
-                    {/*<input className="form__input" type="text" required onClick={handleDataChange}/>*/}
-                    {/*<p className="form__error-text" id="name-error"></p>*/}
-                    {/*<input className="form__input" type="email" required onClick={handleDataChange}/>*/}
-                    {/*<p className="form__error-text" id="email-error"></p>*/}
-                    {/*<input className="form__input form__input_error" type="password" required onClick={handleDataChange}/>*/}
-                    {/*<p className="form__error-text form__error-text_active" id="password-error">Что-то пошло не так...</p>*/}
+                    <
+                        input className="form__input"
+                              type="password"
+                              name="password"
+                              required
+                              onChange={handleChange}
+                              value={values.password || ''}
+                              minLength="2"
+                              maxLength="30"
+                    />
+                    <p className="form__error-text" id="name-error">{errors.password || ''}</p>
                     <button
+                        type="submit"
                         className="form__button"
-                        onClick={handleSubmit}>
+                        disabled={!isValid}>
                         Зарегистрироваться
                     </button>
                 </form>

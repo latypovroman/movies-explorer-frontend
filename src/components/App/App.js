@@ -2,7 +2,7 @@ import './App.css';
 import Header from '../../components/Header/Header';
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
-import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
+import { Route, Routes, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import Footer from "../Footer/Footer";
 import React, { useEffect } from "react";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -32,6 +32,7 @@ function App() {
     function tokenCheck() {
         const jwt = localStorage.getItem('jwt');
         if (jwt) {
+            console.log(1);
             return getUserInfo();
         }
 
@@ -101,12 +102,8 @@ function App() {
 
     const signOut = () => {
         localStorage.removeItem('jwt');
-        navigate('/signin');
-        setAuth({
-            name: '',
-            email: '',
-            id: '',
-        })
+        setAuth({});
+        navigate('/');
     }
 
     const addSavedMovie = (movie) => {
@@ -138,9 +135,8 @@ function App() {
 
     const checkHeaderPath = () => {
         const routesWithHeader = ["/", "/movies", "/saved-movies", "/profile"];
-        const { email, name} =  auth;
         return routesWithHeader.map((path) =>
-            location.pathname === path && (email && name)
+            location.pathname === path
                 ? <Header key={path}/>
                 : null)
     }
@@ -151,8 +147,16 @@ function App() {
               { checkHeaderPath() }
               <Routes>
                   <Route path="/" element={ <><Main/><Footer/></> }/>
-                  <Route path="/signup" element={ <Register handleRegister={handleRegister}/> }/>
-                  <Route path="/signin" element={ <Login handleLogin={handleLogin}/> }/>
+                  <Route path="/signup" element={
+                      auth.id
+                          ? <Navigate to="/movies"/>
+                          : <Register handleRegister={handleRegister}/>
+                  }/>
+                  <Route path="/signin" element={
+                      auth.id
+                          ? <Navigate to="/movies"/>
+                          : <Login handleLogin={handleLogin}/>
+                  }/>
                   <Route path="/movies" element={
                       <PrivateRoute>
                           <Movies

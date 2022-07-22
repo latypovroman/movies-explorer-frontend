@@ -10,20 +10,6 @@ export function useFormWithValidation() {
         const name = target.name;
         const value = target.value;
 
-        // if (name === 'name' && input.validity.patternMismatch) {
-        //     input.setCustomValidity('Имя должно содержать только латиницу, кириллицу, пробел или дефис.')
-        // } else {
-        //     input.setCustomValidity('');
-        // }
-        //
-        // if (name === 'email') {
-        //     if (!isEmail(value)) {
-        //         input.setCustomValidity('Некорректый адрес почты.');
-        //     } else {
-        //         input.setCustomValidity('');
-        //     }
-        // }
-
         setValues({...values, [name]: value});
         setErrors({...errors, [name]: target.validationMessage });
         setIsValid(target.closest("form").checkValidity());

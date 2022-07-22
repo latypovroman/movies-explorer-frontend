@@ -1,26 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import './Login.css';
 import SignInput from "../SignInput/SignInput";
+import { useFormWithValidation } from "../../hooks/useValidation";
 
 const Login = ({ handleLogin }) => {
 
-    const [userData, setUserData] = React.useState({
-        email: '',
-        password: ''
-    });
+    const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+    // const [userData, setUserData] = React.useState({
+    //     email: '',
+    //     password: ''
+    // });
 
-    const handleDataChange = (evt) => {
-        setUserData({
-            ...userData,
-            [evt.target.name]: evt.target.value
-        })
-    }
+    // const handleDataChange = (evt) => {
+    //     setUserData({
+    //         ...userData,
+    //         [evt.target.name]: evt.target.value
+    //     })
+    // }
+
+    useEffect(() => {
+        resetForm();
+    }, [resetForm]);
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        const { email, password } = userData;
+        const { email, password } = values;
+        console.log(values);
         handleLogin(email, password);
     }
 
@@ -30,19 +37,34 @@ const Login = ({ handleLogin }) => {
             <div className="sign__container">
                 <img className="sign__logo" src={logo} alt="Логотип"/>
                 <h2 className="sign__title">Рады видеть!</h2>
-                <form className="form">
+                <form className="form" onSubmit={handleSubmit}>
                     <p className="form__description">E-mail</p>
-                    <SignInput handleDataChange={handleDataChange} type="email"/>
+                    <
+                        input
+                        onChange={handleChange}
+                        className="form__input"
+                        type="email"
+                        name="email"
+                        required
+                        value={values.email || ''}
+                    />
+                    <p className="form__error-text" id="email-error">{errors.email || ''}</p>
                     <p className="form__description">Пароль</p>
-                    <SignInput handleDataChange={handleDataChange} type="password"/>
-                    {/*<p className="form__description">E-mail</p>*/}
-                    {/*<input className="form__input" type="email" required/>*/}
-                    {/*<p className="form__error-text" id="email-error"></p>*/}
-                    {/*<p className="form__description">Пароль</p>*/}
-                    {/*<input className="form__input form__input_error" type="password" required/>*/}
-                    {/*<p className="form__error-text" id="password-error"></p>*/}
+                    <
+                        input
+                        onChange={handleChange}
+                        className="form__input form__input_error"
+                        type="password"
+                        name="password"
+                        value={values.password || ''}
+                        minLength="2"
+                        maxLength="30"
+                        required
+                    />
+                    <p className="form__error-text" id="password-error">{errors.password || ''}</p>
                     <button
-                        onClick={handleSubmit}
+                        type="submit"
+                        disabled={!isValid}
                         className="form__button form__button_type_login">
                         Войти
                     </button>
