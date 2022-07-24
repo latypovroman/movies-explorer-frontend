@@ -34,7 +34,7 @@ class MainApi {
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${this._jwt}`,
+                Authorization: `Bearer ${localStorage.getItem('jwt')}`,
             }
         })
             .then(this._isResOk)
@@ -121,7 +121,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-    url: "https://api.movies.app.nomoredomains.xyz",
+    url: "http://localhost:3000",
     headers: {
         Accept: "application/json",
         "Content-Type": "application/json"

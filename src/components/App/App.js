@@ -26,14 +26,15 @@ function App() {
     }, []);
 
     useEffect(() => {
-        getThisUserSavedMovies();
+        if (auth.id) {
+            getThisUserSavedMovies();
+        }
     }, [auth]);
 
     function tokenCheck() {
         const jwt = localStorage.getItem('jwt');
         if (jwt) {
-            console.log(1);
-            return getUserInfo();
+            getUserInfo();
         }
 
     }
@@ -76,16 +77,9 @@ function App() {
     const handleLogin = (email, password) => {
         mainApi.authorize(email, password)
             .then((user) => {
-                localStorage.setItem('jwt', user.token);
-                mainApi.getUserInfo(user.token)
-                    .then((user) => {
-                        setAuth({
-                            id: user._id,
-                            email: user.email,
-                            name: user.name
-                        });
-                    })
-                navigate('/movies');
+                console.log(user.token);
+                localStorage.setItem('jwt', user.token)
+                getUserInfo();
             })
             .catch(data => console.log(data));
     }
