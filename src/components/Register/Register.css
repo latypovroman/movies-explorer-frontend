@@ -81,8 +81,17 @@
     transition: all 0.3s ease-in;
 }
 
+.form__button:disabled {
+    transition: none;
+    background-color: grey;
+}
+
 .form__button:hover {
     opacity: 0.8;
+}
+
+.form__button:hover {
+    opacity: 1;
 }
 
 .sign__redirect-text {
