@@ -66,7 +66,10 @@ function App() {
 
     const handleRegister = (user) => {
         mainApi.register(user)
-            .then(() => navigate('/signin'))
+            .then(() => {
+                const {email, password} = user;
+                handleLogin(email, password);
+            })
             .catch(data => console.log(data));
     }
 

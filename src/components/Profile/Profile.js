@@ -7,6 +7,7 @@ const Profile = ({ signOut, changeProfileInfo }) => {
 
     const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
     const auth = useContext(CurrentUserContext);
+    const [isDataChanged, setIsDataChanged] = React.useState(false);
 
     useEffect(() => {
         if (auth) {
@@ -19,6 +20,14 @@ const Profile = ({ signOut, changeProfileInfo }) => {
     const handleSubmit = (evt) => {
         evt.preventDefault();
         changeProfileInfo(values);
+        setIsDataChanged(true);
+    }
+
+    const renderConfirmation = () => {
+        if (isDataChanged) {
+            return 'Профиль изменен'
+        }
+        setTimeout(() => setIsDataChanged(false), 3000);
     }
 
     const checkDisable = () => !isValid || (auth.name === values.name && auth.email === values.email);
@@ -37,6 +46,7 @@ const Profile = ({ signOut, changeProfileInfo }) => {
                         onChange={handleChange}
                         maxLength="30"
                         minLength="2"
+                        required
                     />
                     <p className="profile__text">E-mail</p>
                     <input
@@ -45,11 +55,14 @@ const Profile = ({ signOut, changeProfileInfo }) => {
                         name="email"
                         value={values.email || ''}
                         onChange={handleChange}
+                        required
                     />
                 </div>
                 <div className="profile__buttons">
-                    <span className="profile__buttons-error">
-                        {errors.name || errors.email || ''}
+                    <span className={
+                        `profile__buttons-info profile__buttons-info_type_${isDataChanged ? `confirm` : `error`}`
+                    }>
+                        {errors.name || errors.email || renderConfirmation()}
                     </span>
                     <button
                         type="submit"

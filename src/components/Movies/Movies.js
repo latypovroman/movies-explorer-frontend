@@ -15,19 +15,28 @@ const Movies = ({ addSavedMovie, savedMovies, deleteSavedMovie }) => {
     })
 
     function fetchMovieList() {
-        moviesApi.getBeatMovies()
-            .then((data) => {
-                setIsLoading(true);
-                setMovieList(data);
-            })
-            .catch((data) => {
-                console.log(data);
-            })
-            .finally(() => {
-                setTimeout(() => {
-                    setIsLoading(false);
-                }, 1000);
-            })
+        const storedList = localStorage.getItem('movie-list');
+         if (!storedList) {
+            moviesApi.getBeatMovies()
+                .then((data) => {
+                    console.log(data);
+                    setIsLoading(true);
+                    setMovieList(data);
+                    localStorage.setItem('movie-list', JSON.stringify(data));
+                })
+                .catch((data) => {
+                    console.log(data);
+                })
+                .finally(() => {
+                    setTimeout(() => {
+                        setIsLoading(false);
+                    }, 1000);
+                })
+        }
+
+        if (storedList) {
+            setMovieList(JSON.parse(storedList));
+        }
     }
 
     React.useEffect(() => {

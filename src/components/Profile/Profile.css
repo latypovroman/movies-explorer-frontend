@@ -95,13 +95,21 @@
     color: #EE3465;
 }
 
-.profile__buttons-error {
+.profile__buttons-info {
     margin-bottom: 20px;
     font-weight: 400;
     font-size: 11px;
     line-height: 13px;
     color: #FF004C;
     text-align: center;
+}
+
+.profile__buttons-info_type_error {
+    color: #FF004C;
+}
+
+.profile__buttons-info_type_confirm {
+    color: #24c6cb;
 }
 
 @media screen and (max-width: 560px) {
