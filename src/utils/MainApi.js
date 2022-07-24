@@ -121,7 +121,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-    url: "https://movies.app.nomoredomains.xyz",
+    url: "https://api.movies.app.nomoredomains.xyz",
     headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
