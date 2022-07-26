@@ -54,17 +54,20 @@ const Movies = ({ addSavedMovie, savedMovies, deleteSavedMovie }) => {
             return title.includes(filter.search) && tumblerCheck;
         })
 
-    }, [filter, movieList])
+    }, [filter, movieList, auth.id])
 
     React.useEffect(() => {
         fetchMovieList();
     }, [])
 
     const handleShortsTumbler = () => {
+
         setFilter({
             ...filter,
             shorts: !filter.shorts,
         });
+        console.log(filter.shorts)
+        localStorage.setItem(`${auth.id}-stored-filter`, JSON.stringify(filter));
     }
 
 
@@ -73,14 +76,18 @@ const Movies = ({ addSavedMovie, savedMovies, deleteSavedMovie }) => {
         setFilter({
             ...filter,
             search: value
-        })
+        });
+        localStorage.setItem(`${auth.id}-stored-filter`, JSON.stringify(filter));
+
     }
 
     const handleSearchSubmit = (value) => {
+        value = value.toLowerCase();
         setFilter({
             ...filter,
             search: value
         })
+        localStorage.setItem(`${auth.id}-stored-filter`, JSON.stringify(filter));
     }
 
     const checkMovieListRender = () => {

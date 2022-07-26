@@ -11,7 +11,7 @@ const MoviesCardList = ({ movieList, addSavedMovie, savedMovies, deleteSavedMovi
     const handleWidth = () => {
         setTimeout(() => setWidth(window.innerWidth), 1000);
     }
-    window.addEventListener('resize', handleWidth);
+    // window.addEventListener('resize', handleWidth);
 
     const checkLayoutType = () => {
         if (width > 1200) {
@@ -32,6 +32,11 @@ const MoviesCardList = ({ movieList, addSavedMovie, savedMovies, deleteSavedMovi
 
     useEffect(() => {
         checkLayoutType();
+        window.addEventListener('resize', handleWidth);
+
+        return (() => {
+            window.removeEventListener('resize', handleWidth);
+        })
     }, [width])
 
     useEffect(() => {
