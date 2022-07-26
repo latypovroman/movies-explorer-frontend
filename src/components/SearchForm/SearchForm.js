@@ -4,10 +4,17 @@ import find from '../../images/find.svg'
 import switchOn from '../../images/switch-on.svg'
 import switchOff from '../../images/switch-off.svg'
 
-const SearchForm = ({ handleSearchText, showShorts, handleShortsTumbler }) => {
+const SearchForm = ({ handleSearchSubmit, handleSearchText, showShorts, handleShortsTumbler }) => {
+
+    const [value, setValue] = React.useState('');
 
     const onInputChange = (evt) => {
-        handleSearchText(evt.target.value)
+        setValue(evt.target.value);
+        handleSearchText(evt.target.value);
+    }
+
+    const search = () => {
+        handleSearchSubmit(value)
     }
 
     return (
@@ -19,9 +26,14 @@ const SearchForm = ({ handleSearchText, showShorts, handleShortsTumbler }) => {
                     placeholder="Фильм"
                     required
                     name="search"
+                    value={value}
                     onChange={onInputChange}
                 />
-                <button className="search__button"><img src={find} alt="Иконка поиска"/></button>
+                <button
+                    className="search__button"
+                    onClick={search}>
+                    <img src={find} alt="Иконка поиска"/>
+                </button>
                 <div className="search__switch">
                     <button className="search__switch-switcher" onClick={handleShortsTumbler}>
                         {

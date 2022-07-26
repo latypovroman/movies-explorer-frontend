@@ -1,12 +1,14 @@
-import React, {useMemo} from 'react';
+import React, { useContext, useMemo } from 'react';
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import moviesApi from "../../utils/MoviesApi";
 import './Movies.css';
 import Preloader from "../Preloader/Preloader";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const Movies = ({ addSavedMovie, savedMovies, deleteSavedMovie }) => {
 
+    const auth = useContext(CurrentUserContext);
     const [movieList, setMovieList] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(false);
     const [filter, setFilter] = React.useState({
@@ -15,14 +17,14 @@ const Movies = ({ addSavedMovie, savedMovies, deleteSavedMovie }) => {
     })
 
     function fetchMovieList() {
-        const storedList = localStorage.getItem('movie-list');
+        const storedList = localStorage.getItem(`${auth.id}-stored-filter`);
          if (!storedList) {
             moviesApi.getBeatMovies()
                 .then((data) => {
-                    console.log(data);
                     setIsLoading(true);
                     setMovieList(data);
                     localStorage.setItem('movie-list', JSON.stringify(data));
+                    console.log(data)
                 })
                 .catch((data) => {
                     console.log(data);
@@ -35,9 +37,24 @@ const Movies = ({ addSavedMovie, savedMovies, deleteSavedMovie }) => {
         }
 
         if (storedList) {
-            setMovieList(JSON.parse(storedList));
+            setMovieList(JSON.parse(localStorage.getItem('movie-list')));
+            setFilter(JSON.parse(storedList))
         }
     }
+
+    const filteredMovieList = useMemo(() => {
+        if (filter.shorts === true && filter.search === '') {
+            return movieList;
+        }
+        return movieList.filter((movie) => {
+            localStorage.setItem(`${auth.id}-stored-filter`, JSON.stringify(filter));
+            const short = movie.duration < 40;
+            const tumblerCheck = filter.shorts ? true : !short;
+            const title = movie.nameRU.toLowerCase();
+            return title.includes(filter.search) && tumblerCheck;
+        })
+
+    }, [filter, movieList])
 
     React.useEffect(() => {
         fetchMovieList();
@@ -50,21 +67,16 @@ const Movies = ({ addSavedMovie, savedMovies, deleteSavedMovie }) => {
         });
     }
 
-    const filteredMovieList = useMemo(() => {
-        if (filter.shorts === true && filter.search === '') {
-            return movieList;
-        }
-        return movieList.filter((movie) => {
-            const short = movie.duration < 40;
-            const tumblerCheck = filter.shorts ? true : !short;
-            const title = movie.nameRU.toLowerCase();
-            return title.includes(filter.search) && tumblerCheck;
-        })
-    }, [filter, movieList])
-
 
     const handleSearchText = (value) => {
         value = value.toLowerCase();
+        setFilter({
+            ...filter,
+            search: value
+        })
+    }
+
+    const handleSearchSubmit = (value) => {
         setFilter({
             ...filter,
             search: value
@@ -95,6 +107,7 @@ const Movies = ({ addSavedMovie, savedMovies, deleteSavedMovie }) => {
                 handleShortsTumbler={handleShortsTumbler}
                 filter={filter}
                 handleSearchText={handleSearchText}
+                handleSearchSubmit={handleSearchSubmit}
             />
             { checkMovieListRender() }
         </main>

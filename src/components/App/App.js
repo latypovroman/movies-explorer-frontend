@@ -34,6 +34,7 @@ function App() {
     function tokenCheck() {
         const jwt = localStorage.getItem('jwt');
         if (jwt) {
+            console.log('ok')
             getUserInfo();
         }
 
@@ -77,7 +78,6 @@ function App() {
     const handleLogin = (email, password) => {
         mainApi.authorize(email, password)
             .then((user) => {
-                console.log(user.token);
                 localStorage.setItem('jwt', user.token)
                 getUserInfo();
             })
@@ -99,6 +99,7 @@ function App() {
 
     const signOut = () => {
         localStorage.removeItem('jwt');
+        localStorage.removeItem(`${auth.id}-stored-filter`);
         setAuth({});
         navigate('/');
     }
