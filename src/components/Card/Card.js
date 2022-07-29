@@ -1,44 +1,54 @@
 import React from 'react';
-import movieCover from '../../images/movie-cover.png'
 import './Card.css'
 import { useLocation } from "react-router-dom";
-// Использую после зачета
-// import deleteCard from "../../images/delete.svg";
-// import unbookmark from "../../images/save.svg";
-// import bookmark from "../../images/save-transparent.svg";
-import deleteCard from "../../images/wbutton-x.svg";
-import unbookmark from "../../images/wbutton-unsave.svg";
-import bookmark from "../../images/wbutton-save.svg";
+import SaveMovieButton from "../SaveMovieButton/SaveMovieButton";
+import DeleteMovieButton from "../DeleteMovieButton/DeleteMovieButton";
+import DeleteSaveMovieButton from "../DeleteSaveMovieButton/DeleteSaveMovieButton";
 
 
-const Card = () => {
+const Card = ({ movie, saveMovie, deleteMovie, isSaved }) => {
 
-    const [isSaved, setIsSaved] = React.useState(false);
     const location = useLocation();
+    const onSaveClick = () => saveMovie(movie);
+    const onDeleteClick = () => deleteMovie(movie);
 
-    const handleSave = () => {
-        setIsSaved(!isSaved);
+    const imageUrl = () => {
+        return `https://api.nomoreparties.co${movie.image.url}`
     }
 
-    const handleImage = () => {
+    const handleCardButton = () => {
         if (location.pathname === '/saved-movies') {
-            return <img className="card__delete-icon" src={deleteCard} alt="Значок удаления закладки"/>
+            return <DeleteSaveMovieButton onButtonClick={onDeleteClick}/>
         } else if (isSaved) {
-            return <img src={unbookmark} alt="Значок закладки активный"/>
+            return <DeleteMovieButton onButtonClick={onDeleteClick}/>
         } else {
-            return <img src={bookmark} alt="Значок закладки неактивный"/>
+            return <SaveMovieButton onButtonClick={onSaveClick}/>
+        }
+    }
+
+    const lengthToString = (duration) => {
+        if (duration <= 59) {
+            return `${duration}м`
+        }
+
+        if (duration > 59) {
+            return `${Math.floor(duration / 60)}ч ${duration % 60}м`
         }
     }
 
     return (
         <li className="card">
-            <img className="card__image" src={movieCover} alt="Постер фильма"/>
+            <a target="_blank" href={movie.trailerLink}>
+                <img
+                    className="card__image"
+                    src={ location.pathname === '/movies' ? imageUrl() : movie.image} //данные от разных апи в разном виде
+                    alt="Постер фильма"
+                />
+            </a>
             <div className="card__panel">
-                <h2 className="card__title">33 слова о дизайне</h2>
-                <button className="card__save-btn" onClick={handleSave}>
-                    {handleImage()}
-                </button>
-                <p className="card__length">1ч42м</p>
+                <h2 className="card__title">{movie.nameRU}</h2>
+                    { handleCardButton() }
+                <p className="card__length">{lengthToString(movie.duration)}</p>
             </div>
         </li>
     );

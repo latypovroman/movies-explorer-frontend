@@ -1,12 +1,19 @@
 import React from 'react';
 import Card from "../Card/Card";
 
-const SavedMoviesCardList = () => {
+const SavedMoviesCardList = ({ savedMovies, deleteMovie }) => {
+
     return (
         <section className="cards">
             <div className="cards__inner">
                 <ul className="card-list card-list_saved-movies">
-                    { [...Array(3)].map((card, index) => <Card key={index}/>) }
+                    {
+                        savedMovies.map((movie) => <Card
+                            key={movie._id}
+                            isSaved={true}
+                            deleteMovie={deleteMovie}
+                            movie={movie}/>)
+                    }
                 </ul>
             </div>
         </section>
