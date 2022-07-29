@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4725a99a-19dd-4295-b32d-4edb723769b2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../movies-explorer-front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../movies-explorer-front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../movies-explorer-api/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../movies-explorer-api/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../movies-explorer-api/controllers/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/../movies-explorer-api/controllers/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../movies-explorer-api/middlewares/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/../movies-explorer-api/middlewares/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../todo-react/src/components/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../todo-react/src/components/Main.jsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2B4g29treUoTeD5seJtRuagMjYC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../movies-explo" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="D:\Soft\WebStorm 2021.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\movies-explorer-frontend\src" />
+      <recent name="D:\projects\movies-explorer-frontend" />
+      <recent name="D:\projects\movies-explorer-frontend\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\movies-explorer-frontend\src" />
+      <recent name="D:\projects\movies-explorer-frontend\src\components" />
+      <recent name="D:\projects\movies-explorer-frontend\src\App" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="App.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/components/App/App.js" working-dir="$PROJECT_DIR$/src/components/App">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.App.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4725a99a-19dd-4295-b32d-4edb723769b2" name="Changes" comment="" />
+      <created>1656170566932</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1656170566932</updated>
+      <workItem from="1656170568658" duration="10723000" />
+      <workItem from="1656188637287" duration="2542000" />
+      <workItem from="1656198149210" duration="42692000" />
+      <workItem from="1656441165142" duration="28470000" />
+      <workItem from="1656678469623" duration="16121000" />
+      <workItem from="1656775305082" duration="5618000" />
+      <workItem from="1656803702548" duration="6214000" />
+      <workItem from="1656836012812" duration="5542000" />
+      <workItem from="1656953076816" duration="3990000" />
+      <workItem from="1657213764736" duration="4647000" />
+      <workItem from="1657227193771" duration="6266000" />
+      <workItem from="1657284688693" duration="6566000" />
+      <workItem from="1657293723212" duration="3040000" />
+      <workItem from="1657309851298" duration="3056000" />
+      <workItem from="1657449591441" duration="7349000" />
+      <workItem from="1657541428510" duration="613000" />
+      <workItem from="1657542337857" duration="601000" />
+      <workItem from="1657818475458" duration="5916000" />
+      <workItem from="1657831926018" duration="2253000" />
+      <workItem from="1657881145626" duration="1765000" />
+      <workItem from="1658051014867" duration="6753000" />
+      <workItem from="1658079800250" duration="1427000" />
+      <workItem from="1658141599102" duration="6692000" />
+      <workItem from="1658174283073" duration="595000" />
+      <workItem from="1658177597319" duration="1521000" />
+      <workItem from="1658244737834" duration="6715000" />
+      <workItem from="1658254427741" duration="3570000" />
+      <workItem from="1658262539905" duration="2069000" />
+      <workItem from="1658328547908" duration="2442000" />
+      <workItem from="1658334082111" duration="4634000" />
+      <workItem from="1658413311981" duration="19701000" />
+      <workItem from="1658435163617" duration="5775000" />
+      <workItem from="1658444601865" duration="618000" />
+      <workItem from="1658514503316" duration="22410000" />
+      <workItem from="1658627282252" duration="7381000" />
+      <workItem from="1658692759305" duration="4533000" />
+      <workItem from="1658702583765" duration="152000" />
+      <workItem from="1658706347083" duration="655000" />
+      <workItem from="1658772267539" duration="8866000" />
+      <workItem from="1658835312196" duration="5291000" />
+      <workItem from="1659107963770" duration="8306000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
