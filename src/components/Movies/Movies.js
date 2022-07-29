@@ -24,7 +24,6 @@ const Movies = ({ addSavedMovie, savedMovies, deleteSavedMovie }) => {
                     setIsLoading(true);
                     setMovieList(data);
                     localStorage.setItem('movie-list', JSON.stringify(data));
-                    console.log(data)
                 })
                 .catch((data) => {
                     console.log(data);
@@ -66,7 +65,6 @@ const Movies = ({ addSavedMovie, savedMovies, deleteSavedMovie }) => {
             ...filter,
             shorts: !filter.shorts,
         });
-        console.log(filter.shorts)
         localStorage.setItem(`${auth.id}-stored-filter`, JSON.stringify(filter));
     }
 

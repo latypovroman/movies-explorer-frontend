@@ -1,20 +1,26 @@
 import React, { useContext } from 'react';
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { useLocation, Navigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
 
-    const { email, name } = useContext(CurrentUserContext);
+    const auth = useContext(CurrentUserContext);
+    const navigate = useNavigate();
     const location = useLocation();
 
-    if (!email || !name) {
-        if (location.pathname === '/movies'
-            || location.pathname === '/saved-movies'
-            || location.pathname === '/profile') {
-            return <Navigate to='/signin'/>
+    React.useEffect(() => {
+        if (!auth.id) {
+            if (location.pathname === '/movies'
+                || location.pathname === '/saved-movies'
+                || location.pathname === '/profile') {
+                navigate('/signin');
+            }
         }
-    }
+    }, [auth]);
+
+
     return children;
+
 };
 
 export default PrivateRoute;

@@ -2,29 +2,15 @@ import React, { useEffect } from 'react';
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import './Register.css';
-import SignInput from "../SignInput/SignInput";
 import { useFormWithValidation } from "../../hooks/useValidation";
 
 const Register = ({ handleRegister }) => {
 
     const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
-    // const [userData, setUserData] = React.useState({
-    //     email: '',
-    //     password: '',
-    //     name: '',
-    // })
 
     useEffect(() => {
         resetForm();
     }, [resetForm]);
-
-    // const handleDataChange = (evt) => {
-    //     setUserData({
-    //         ...userData,
-    //         [evt.target.name]: evt.target.value
-    //     })
-    //     console.log(userData)
-    // }
 
     const handleSubmit = (evt) => {
         evt.preventDefault();

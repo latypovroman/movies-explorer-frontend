@@ -15,8 +15,6 @@ const Profile = ({ signOut, changeProfileInfo }) => {
         }
     }, [auth, resetForm]);
 
-
-
     const handleSubmit = (evt) => {
         evt.preventDefault();
         changeProfileInfo(values);

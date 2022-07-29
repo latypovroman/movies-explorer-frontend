@@ -29,12 +29,11 @@ function App() {
         if (auth.id) {
             getThisUserSavedMovies();
         }
-    }, [auth]);
+    }, [auth.id]);
 
     function tokenCheck() {
         const jwt = localStorage.getItem('jwt');
         if (jwt) {
-            console.log('ok')
             getUserInfo();
         }
 
@@ -157,7 +156,8 @@ function App() {
                   }/>
                   <Route path="/movies" element={
                       <PrivateRoute>
-                          <Movies
+                          <
+                              Movies
                               addSavedMovie={addSavedMovie}
                               savedMovies={savedMovies}
                               deleteSavedMovie={deleteSavedMovie}

@@ -3,19 +3,30 @@ import './SearchForm.css'
 import find from '../../images/find.svg'
 import switchOn from '../../images/switch-on.svg'
 import switchOff from '../../images/switch-off.svg'
+import { useLocation } from "react-router-dom";
 
 const SearchForm = ({ handleSearchSubmit, handleSearchText, showShorts, handleShortsTumbler }) => {
 
     const [value, setValue] = React.useState('');
+    const location = useLocation();
 
     const onInputChange = (evt) => {
-        setValue(evt.target.value);
-        handleSearchText(evt.target.value);
+        const value = evt.target.value;
+        setValue(value);
+        handleSearchText(value);
+        location.pathname === '/movies' && localStorage.setItem('search-value', value);
     }
 
     const search = () => {
         handleSearchSubmit(value)
     }
+
+    React.useEffect(() => {
+        if (location.pathname === '/movies') {
+            const storedValue = localStorage.getItem('search-value');
+            setValue(storedValue);
+        }
+    }, [location.pathname])
 
     return (
         <div className="search">
